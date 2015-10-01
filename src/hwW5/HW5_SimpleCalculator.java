@@ -2,7 +2,7 @@ package hwW5;
 import java.util.Scanner;
 
 //Can only calculate with whole numbers
-public class HW5 {
+public class HW5_SimpleCalculator {
 	public static void main(String[] args) {
 		// Declare
 		Scanner input = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class HW5 {
 		boolean div = false;
 		char oper;
 		// Start
-		System.out.printf("Simple Calculator \n Enter first number: ");
+		System.out.printf("Simple Calculator \n Enter first number: " );
 		a = input.nextInt();
 		System.out.printf(" Possible operators: +, -, *, / ");
 		oper = input.next().charAt(0);

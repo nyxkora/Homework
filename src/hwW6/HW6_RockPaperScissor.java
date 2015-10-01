@@ -3,58 +3,61 @@ import javax.swing.JOptionPane;
 public class HW6_RockPaperScissor {
 
 	public static void main(String[] args) {
-		int comp, user=0;
+		int comp;
 		boolean again;
-		String userS;
-		String win=" . You won!";
-		String lose =" . You lose!";
-		String r = " Rock";
-		String p = " Paper";
-		String s = " Scissors";
+		String userMove, compMove;
+		String r = "Rock";
+		String p = "Paper";
+		String s = "Scissors";
 			
 		//Start
+		
+		//Set CompMove
 		comp = (1+(int)(Math.random()*3));
+		if (comp==1)
+			compMove=r;
+		else if (comp==2)
+			compMove=p;
+		else
+			compMove=s;	
+		//Get UserMove
 		do
 		{ 	again = false;	
-			//JOptionPane.showMessageDialog(null, comp);
-			userS = JOptionPane.showInputDialog("Lets play Rock, Paper, Scissors. Choose your weapon! ");
 			
-			if(userS.equals("r")|| userS.equals("R") || userS.equals("Rock") || userS.equals("rock"))
-				user=1;
-			else if(userS.equals("p") || userS.equals("P") || userS.equals("Paper") || userS.equals("paper"))
-				user=2;
-			else if(userS.equals("s")|| userS.equals("S") || userS.equals("Scissors") || userS.equals("scissors"))
-				user=3;
+			userMove = JOptionPane.showInputDialog("Lets play Rock, Paper, Scissors. Choose your weapon! ");
+			
+			if(userMove.equals("r")|| userMove.equals("R") || userMove.equals("Rock") || userMove.equals("rock"))
+				userMove=r;
+			else if(userMove.equals("p") || userMove.equals("P") || userMove.equals("Paper") || userMove.equals("paper"))
+				userMove=p;
+			else if(userMove.equals("s")|| userMove.equals("S") || userMove.equals("Scissors") || userMove.equals("scissors"))
+				userMove=s;
 			else
 			{
 				JOptionPane.showMessageDialog(null, "Not a valid input, try again.");
 				again=true;	
 			}
+			//JOptionPane.showMessageDialog(null, compMove + userMove);//Debug
 		}
-		while(again);
+		while(again); //Repeat until user enters a valid input
 		
-		if(user == comp)
+		String win  =String.format("You chose %s, computer chose %s. You won!", userMove,compMove);
+		String lose =String.format("You chose %s, computer chose %s. You lost!", userMove,compMove);
+		
+		//Compare compMove & userMove to see who won
+		if(userMove.equals(comp))
 			JOptionPane.showMessageDialog(null, " Tie!");
-		else if (user == 1)
-		{
-			if(comp == 2)
-				JOptionPane.showMessageDialog(null, "You chose "+ r +", computer chose " + p +lose);
-			else if(comp == 3)
-				JOptionPane.showMessageDialog(null, "You chose "+ r +", computer chose " + s +win);
-		}
-		else if (user == 2)
-		{	
-			if(comp ==1)
-				JOptionPane.showMessageDialog(null, "You chose "+ p +", computer chose " + r +win);
-			else if(comp ==3)
-				JOptionPane.showMessageDialog(null, "You chose "+ p +", computer chose " + s +lose);
-		}
-		else 
-		{
-			if(comp==1)
-				JOptionPane.showMessageDialog(null, "You chose "+ s +", computer chose " + r +lose);
-			else if(comp==2)
-				JOptionPane.showMessageDialog(null, "You chose "+ s +", computer chose " + p +win);
-		}
+		
+		else if (userMove.equals(r) && compMove.equals(s) )
+			JOptionPane.showMessageDialog(null,win);
+		
+		else if (userMove.equals(p) && compMove.equals(r))
+			JOptionPane.showMessageDialog(null,win);
+		
+		else if (userMove.equals(s) && compMove.equals(p))
+			JOptionPane.showMessageDialog(null,win);
+		
+		else //if the above moves didn't happen, user lost	
+			JOptionPane.showMessageDialog(null,lose);
 	}
 }

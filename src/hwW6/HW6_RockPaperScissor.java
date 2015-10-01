@@ -26,11 +26,14 @@ public class HW6_RockPaperScissor {
 			
 			userMove = JOptionPane.showInputDialog("Lets play Rock, Paper, Scissors. Choose your weapon! ");
 			
-			if(userMove.equals("r")|| userMove.equals("R") || userMove.equals("Rock") || userMove.equals("rock"))
+			if(userMove.equals("r")|| userMove.equals("R") 
+					|| userMove.equals("Rock") || userMove.equals("rock"))
 				userMove=r;
-			else if(userMove.equals("p") || userMove.equals("P") || userMove.equals("Paper") || userMove.equals("paper"))
+			else if(userMove.equals("p") || userMove.equals("P") 
+					|| userMove.equals("Paper") || userMove.equals("paper"))
 				userMove=p;
-			else if(userMove.equals("s")|| userMove.equals("S") || userMove.equals("Scissors") || userMove.equals("scissors"))
+			else if(userMove.equals("s")|| userMove.equals("S") 
+					|| userMove.equals("Scissors") || userMove.equals("scissors"))
 				userMove=s;
 			else
 			{
@@ -45,7 +48,7 @@ public class HW6_RockPaperScissor {
 		String lose =String.format("You chose %s, computer chose %s. You lost!", userMove,compMove);
 		
 		//Compare compMove & userMove to see who won
-		if(userMove.equals(comp))
+		if(userMove.equals(compMove))
 			JOptionPane.showMessageDialog(null, " Tie!");
 		
 		else if (userMove.equals(r) && compMove.equals(s) )
